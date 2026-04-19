@@ -55,12 +55,8 @@ test-results/
 *~
 .DS_Store
 
-# Reports and Screenshots (생성된 리포트는 제외, 문서는 포함)
-reports/allure/
-reports/playwright/
-reports/pytest/
-reports/screenshots/*.png
-reports/screenshots/*.jpg
+# Reports and Screenshots (현재는 전체 제외, 완성 후 추가 예정)
+reports/
 
 # APK file (105MB - GitHub 100MB 제한으로 인해 제외)
 # Git LFS를 사용하려면 이 줄을 주석 처리하고 git lfs track "*.apk" 실행
