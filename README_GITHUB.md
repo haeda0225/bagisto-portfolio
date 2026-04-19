@@ -116,6 +116,57 @@ playwright install
 pytest tests/web
 ```
 
+## 리포트 완성 후 추가하기
+
+현재 `reports/` 폴더는 `.gitignore`에 포함되어 GitHub에 업로드되지 않습니다.
+
+리포트가 완성되면 다음 단계로 추가할 수 있습니다:
+
+### 1. .gitignore에서 reports 제거
+
+```powershell
+# bagisto_qa_portfolio/.gitignore 파일 편집
+# "reports/" 줄을 삭제하거나 주석 처리
+
+# 또는 다음과 같이 세부적으로 제어:
+# reports/allure/       # 자동 생성 리포트만 제외
+# reports/playwright/
+# reports/pytest/
+```
+
+### 2. reports 폴더 추가 및 커밋
+
+```powershell
+cd bagisto_qa_portfolio
+
+# reports 폴더 추가
+git add reports/
+
+# 커밋
+git commit -m "Add completed reports and portfolio documentation"
+
+# GitHub에 push
+git push
+```
+
+### 3. 특정 파일만 추가하기
+
+전체 폴더가 아닌 특정 파일만 추가하려면:
+
+```powershell
+# HTML 리포트만 추가
+git add reports/portfolio_attachment.html
+
+# 문서만 추가
+git add reports/*.md
+
+# assets 폴더만 추가
+git add reports/assets/
+
+git commit -m "Add portfolio HTML report and documentation"
+git push
+```
+
 ## 문제 해결
 
 ### "fatal: not a git repository"
