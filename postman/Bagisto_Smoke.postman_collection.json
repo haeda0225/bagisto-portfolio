@@ -1,0 +1,22 @@
+{
+  "info": {
+    "name": "Bagisto Smoke",
+    "_postman_id": "bagisto-smoke-portfolio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Product List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-STOREFRONT-KEY",
+            "value": "{{storefront_key}}"
+          }
+        ],
+        "url": "{{base_url}}/api/shop/products"
+      }
+    }
+  ]
+}

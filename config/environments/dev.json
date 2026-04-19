@@ -1,0 +1,17 @@
+{
+  "web_base_url": "https://api-demo.bagisto.com",
+  "api_base_url": "https://api-demo.bagisto.com/api/graphql",
+  "storefront_key": "pk_storefront_vxLIYv5PIp7jkujPNGLFQoDvIdsh2RMF",
+  "api_timeout": 15,
+  "headless": true,
+  "mobile": {
+    "platformName": "Android",
+    "deviceName": "Android Emulator",
+    "automationName": "UiAutomator2",
+    "appPackage": "com.webkul.bagisto.mobikul",
+    "appActivity": "com.bagisto.bagisto_flutter.MainActivity",
+    "udid": "emulator-5554",
+    "appium_server_url": "http://127.0.0.1:4723",
+    "adb_path": "C:/Users/holly/Documents/SwQa/android-sdk/platform-tools/adb.exe"
+  }
+}

@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# PyTest
+.pytest_cache/
+.cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+
+# Allure
+allure-results/
+allure-report/
+
+# Playwright
+playwright-report/
+test-results/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Reports and Screenshots (생성된 리포트는 제외, 문서는 포함)
+reports/allure/
+reports/playwright/
+reports/pytest/
+reports/screenshots/*.png
+reports/screenshots/*.jpg
+
+# APK file (105MB - GitHub 100MB 제한으로 인해 제외)
+# Git LFS를 사용하려면 이 줄을 주석 처리하고 git lfs track "*.apk" 실행
+mobile-app/*.apk
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp

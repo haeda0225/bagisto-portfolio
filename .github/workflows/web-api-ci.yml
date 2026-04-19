@@ -1,0 +1,28 @@
+name: web-api-ci
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r bagisto_qa_portfolio/requirements.txt
+      - name: Install Playwright browsers
+        run: |
+          python -m playwright install --with-deps chromium
+      - name: Run API tests
+        working-directory: bagisto_qa_portfolio
+        run: pytest tests/api -m api
+      - name: Run Web tests
+        working-directory: bagisto_qa_portfolio
+        run: pytest tests/web -m web

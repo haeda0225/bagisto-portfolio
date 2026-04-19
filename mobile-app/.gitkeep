@@ -1,0 +1,2 @@
+# This file ensures the mobile-app directory is tracked by Git
+# even when the APK file is excluded from version control.

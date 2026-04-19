@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" rx="32" fill="#F6F2E8"/>
+  <rect x="70" y="90" width="1060" height="720" rx="28" fill="#FFFCF5" stroke="#D8CFBD" stroke-width="4"/>
+  <text x="110" y="165" fill="#0F6C5C" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="42" font-weight="700">Cross-Channel Contract Validation</text>
+  <text x="110" y="215" fill="#6A6B63" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="24">웹, 앱, API가 같은 Bagisto backend를 보는지 검증</text>
+
+  <g>
+    <rect x="130" y="320" width="240" height="160" rx="24" fill="#E8F1FB"/>
+    <text x="208" y="385" fill="#245B96" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="36" font-weight="700">Web</text>
+    <text x="172" y="430" fill="#245B96" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="22">상품명 / storefront</text>
+
+    <rect x="480" y="320" width="240" height="160" rx="24" fill="#D9EFE9"/>
+    <text x="547" y="385" fill="#0F6C5C" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="36" font-weight="700">API</text>
+    <text x="525" y="430" fill="#0F6C5C" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="22">GraphQL / orders</text>
+
+    <rect x="830" y="320" width="240" height="160" rx="24" fill="#F8E7DF"/>
+    <text x="881" y="385" fill="#B55D3D" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="36" font-weight="700">Mobile</text>
+    <text x="869" y="430" fill="#B55D3D" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="22">My Orders / UI checkout</text>
+  </g>
+
+  <g stroke="#8E9A8C" stroke-width="6" stroke-linecap="round">
+    <path d="M370 400H480"/>
+    <path d="M720 400H830"/>
+  </g>
+
+  <circle cx="425" cy="400" r="11" fill="#8E9A8C"/>
+  <circle cx="775" cy="400" r="11" fill="#8E9A8C"/>
+
+  <text x="110" y="610" fill="#1E1F1C" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="28" font-weight="700">Validated Result</text>
+  <text x="110" y="658" fill="#6A6B63" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="24">웹 상품명과 API 상품명 일치, 앱 홈 상품명과 API 상품명 일치</text>
+  <text x="110" y="705" fill="#6A6B63" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="24">API 주문 생성 후 앱 My Orders 반영, 앱 UI 주문번호와 API 주문 목록 대조</text>
+  <text x="110" y="752" fill="#6A6B63" font-family="Segoe UI, Noto Sans KR, sans-serif" font-size="24">Contract suite: 5 passed</text>
+</svg>

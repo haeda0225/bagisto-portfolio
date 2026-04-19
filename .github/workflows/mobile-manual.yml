@@ -1,0 +1,12 @@
+name: mobile-manual
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Placeholder
+        run: echo "Configure emulator, app artifact, and Appium before enabling mobile CI."
