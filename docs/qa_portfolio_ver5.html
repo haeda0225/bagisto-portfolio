@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QA Portfolio — 정해현</title>
+  <style>
+    :root {
+      --bg: #eef1fa;
+      --ink: #0b1c3d;
+      --muted: #445d80;
+      --line: #bfd0e8;
+      --panel: #ffffff;
+      --soft: #f0f5ff;
+      --teal: #1428a0;
+      --blue: #0a1464;
+      --red: #0055b8;
+      --gold: #0080cc;
+      --green: #1698d0;
+      --shadow: 0 18px 45px rgba(10, 20, 160, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "Segoe UI", "Noto Sans KR", Arial, sans-serif;
+    }
+
+    .deck {
+      display: grid;
+      gap: 28px;
+      width: min(1280px, calc(100vw - 32px));
+      margin: 28px auto;
+    }
+
+    .slide {
+      position: relative;
+      min-height: 760px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      page-break-after: always;
+    }
+
+    .slide-inner {
+      min-height: inherit;
+      padding: 46px 52px 42px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 24px;
+    }
+
+    .kicker {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      max-width: 940px;
+      margin-top: 12px;
+      font-size: 46px;
+      line-height: 1.22;
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    h2 {
+      margin-top: 8px;
+      font-size: 34px;
+      line-height: 1.24;
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    h3 {
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .lead {
+      max-width: 900px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .hero-grid,
+    .two-col,
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-grid {
+      height: 100%;
+      align-items: stretch;
+    }
+
+    .dark {
+      color: #fff;
+      background: #0a1464;
+      border-color: #060e4a;
+    }
+
+    .dark .lead,
+    .dark .meta,
+    .dark .caption,
+    .dark .footer {
+      color: #b8ceff;
+    }
+
+    .dark .kicker {
+      color: #6e9eff;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-content: center;
+    }
+
+    .metric {
+      min-height: 132px;
+      padding: 18px;
+      border: 1px solid rgba(180, 210, 255, 0.22);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 40px;
+      line-height: 1;
+    }
+
+    .metric span,
+    .meta {
+      color: #7a9dc5;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 6px 11px;
+      border: 1px solid #bfd0e8;
+      border-radius: 999px;
+      background: #f0f5ff;
+      color: #0b1c3d;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .dark .pill {
+      border-color: rgba(180, 210, 255, 0.28);
+      background: rgba(255, 255, 255, 0.08);
+      color: #d0e2ff;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card,
+    .visual,
+    .note {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .card {
+      padding: 18px;
+    }
+
+    .card h3 {
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    li {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.58;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .visual {
+      overflow: hidden;
+      background: var(--soft);
+    }
+
+    .visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .visual.contain img {
+      object-fit: contain;
+      padding: 12px;
+      background: #f0f5ff;
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .shot {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f0f5ff;
+    }
+
+    .shot img {
+      display: block;
+      width: 100%;
+      height: 195px;
+      object-fit: contain;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .shot p {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .shot .pass-badge {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 7px;
+      border-radius: 999px;
+      background: #dce8ff;
+      color: #1428a0;
+      font-size: 11px;
+      font-weight: 800;
+      vertical-align: middle;
+    }
+
+    .web-shots .shot img {
+      width: 100%;
+      object-fit: fill;
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-height: 300px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .flow-head {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: #f0f5ff;
+    }
+
+    .flow-asset {
+      display: grid;
+      place-items: center;
+      padding: 0;
+      background: #edf3ff;
+    }
+
+    .flow-asset img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-grid {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .project-grid.reverse {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .project-visual {
+      height: 420px;
+    }
+
+    .summary {
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .summary-row strong {
+      color: #0b1c3d;
+      font-size: 14px;
+    }
+
+    .summary-row span {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      align-self: start;
+      min-height: 34px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .badge.blue { background: var(--blue); }
+    .badge.red { background: var(--red); }
+    .badge.gold { background: var(--gold); }
+    .badge.green { background: var(--green); }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .gh-link {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: #1428a0;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      z-index: 1;
+    }
+
+    .gh-link:hover { text-decoration: underline; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(238, 241, 250, 0.94);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav a {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #0b1c3d;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .deck {
+        width: min(100vw - 18px, 100%);
+        gap: 16px;
+        margin: 16px auto;
+      }
+
+      .slide {
+        min-height: auto;
+      }
+
+      .slide-inner {
+        padding: 30px 24px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .hero-grid,
+      .two-col,
+      .project-grid,
+      .project-grid.reverse,
+      .card-grid,
+      .flow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .visual-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .project-visual {
+        height: 260px;
+      }
+
+      .nav {
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .slide-inner {
+        padding: 22px 16px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+
+      .lead {
+        font-size: 15px;
+      }
+
+      .visual-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .shot img {
+        height: 200px;
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .flow-asset img {
+        max-height: 180px;
+      }
+
+      .project-visual {
+        height: 200px;
+      }
+
+      .nav a {
+        font-size: 11px;
+        padding: 6px 8px;
+      }
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .method-card {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .method-card h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+
+    .method-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .fail-note {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-left: 3px solid var(--blue);
+      border-radius: 0 6px 6px 0;
+      background: var(--soft);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .fail-note strong {
+      color: var(--blue);
+    }
+
+    .bug-report {
+      border: 1.5px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .bug-report-head {
+      padding: 14px 18px;
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .bug-report-head .bug-meta {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #b8ceff;
+      margin-bottom: 4px;
+    }
+
+    .bug-report-head .bug-title {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .bug-badges {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .severity-badge {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .severity-minor { background: #dce8ff; color: #1428a0; }
+    .priority-medium { background: #c8d9ff; color: #0a1464; }
+
+    .bug-report-body {
+      padding: 14px 18px;
+    }
+
+    .bug-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 8px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .bug-row:last-child { border-bottom: none; }
+
+    .bug-row strong {
+      color: #0b1c3d;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-top: 2px;
+    }
+
+    .bug-row span { color: var(--muted); }
+
+    .discovery-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      height: 100%;
+    }
+
+    .discovery-table th,
+    .discovery-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .discovery-table th {
+      background: var(--soft);
+      color: #0b1c3d;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .discovery-table td:first-child {
+      font-weight: 700;
+      color: var(--teal);
+      white-space: nowrap;
+    }
+
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .roadmap-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .roadmap-head {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .roadmap-head .step-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .roadmap-head h3 {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .roadmap-head.current { background: var(--blue); }
+    .roadmap-head.current .step-label { color: #b8ceff; }
+    .roadmap-head.current h3 { color: #fff; }
+
+    .roadmap-head.next { background: var(--teal); }
+    .roadmap-head.next .step-label { color: #b8ceff; }
+    .roadmap-head.next h3 { color: #fff; }
+
+    .roadmap-head.after { background: var(--soft); }
+    .roadmap-head.after .step-label { color: var(--teal); }
+    .roadmap-head.after h3 { color: var(--blue); }
+
+    .roadmap-body {
+      padding: 14px 16px;
+      background: var(--panel);
+    }
+
+    .roadmap-body ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .roadmap-body li {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .tc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .tc-table th,
+    .tc-table td {
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .tc-table th {
+      background: var(--soft);
+      color: #0b1c3d;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tc-table tr:nth-child(even) td {
+      background: #edf3ff;
+    }
+
+    .tc-table .pass {
+      color: #1428a0;
+      font-weight: 700;
+    }
+
+    .tc-table .fail {
+      color: #0a1464;
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    .ep-tag,
+    .bva-tag {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .ep-tag {
+      background: #dce8ff;
+      color: #1428a0;
+    }
+
+    .bva-tag {
+      background: #d8eeff;
+      color: #0055b8;
+    }
+
+    .da-pair-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .da-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .da-visual {
+      height: 175px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .da-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .deck {
+        width: 100%;
+        margin: 0;
+        gap: 0;
+      }
+
+      .slide {
+        width: 100vw;
+        height: 100vh;
+        min-height: 100vh;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: hidden;
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .slide-inner {
+        padding: 22px 34px 18px;
+        gap: 12px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      .lead {
+        margin-top: 10px;
+        font-size: 15px;
+        line-height: 1.52;
+      }
+
+      .footer {
+        font-size: 11px;
+      }
+
+      .visual-grid,
+      .flow-grid,
+      .two-col,
+      .project-grid,
+      .project-grid.reverse,
+      .da-pair-grid {
+        gap: 12px;
+      }
+
+      .shot img {
+        height: 160px;
+      }
+
+      .shot p {
+        padding: 8px 10px;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .flow {
+        min-height: 250px;
+      }
+
+      .flow-head {
+        padding: 14px 16px;
+      }
+
+      .flow-head h3 {
+        font-size: 16px;
+      }
+
+      .meta {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      /* slide 2 */
+      #s2 .slide-inner {
+        padding: 18px 28px 14px;
+        gap: 8px;
+      }
+
+      #s2 h2 {
+        font-size: 28px;
+      }
+
+      #s2 .lead {
+        font-size: 14px;
+        line-height: 1.42;
+      }
+
+      #s2 .method-grid {
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
+      #s2 .method-card {
+        padding: 9px 10px;
+      }
+
+      #s2 .method-card h3 {
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      #s2 .method-card p {
+        font-size: 11px;
+        line-height: 1.32;
+      }
+
+      #s2 .tc-table {
+        font-size: 10.5px;
+      }
+
+      #s2 .tc-table th,
+      #s2 .tc-table td {
+        padding: 4px 5px;
+        line-height: 1.25;
+      }
+
+      #s2 .fail-note {
+        margin-top: 6px;
+        padding: 6px 8px;
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      /* slide 3 */
+      #s3 .slide-inner {
+        padding: 18px 28px 14px;
+        gap: 10px;
+      }
+
+      #s3 h2 {
+        font-size: 28px;
+      }
+
+      #s3 .lead {
+        font-size: 14px;
+        line-height: 1.42;
+      }
+
+      #s3 .two-col {
+        gap: 10px;
+        align-items: stretch;
+      }
+
+      #s3 .discovery-table {
+        font-size: 11px;
+      }
+
+      #s3 .discovery-table th,
+      #s3 .discovery-table td {
+        padding: 6px 7px;
+        line-height: 1.28;
+      }
+
+      #s3 .bug-report-head {
+        padding: 10px 12px;
+      }
+
+      #s3 .bug-report-head .bug-meta,
+      #s3 .bug-row strong {
+        font-size: 10px;
+      }
+
+      #s3 .bug-report-head .bug-title {
+        font-size: 13px;
+      }
+
+      #s3 .bug-badges {
+        margin-top: 6px;
+      }
+
+      #s3 .severity-badge {
+        padding: 2px 7px;
+        font-size: 10px;
+      }
+
+      #s3 .bug-report-body {
+        padding: 10px 12px;
+      }
+
+      #s3 .bug-row {
+        grid-template-columns: 64px 1fr;
+        gap: 6px;
+        padding: 7px 0;
+        font-size: 11px;
+        line-height: 1.32;
+      }
+
+      /* slides 4 and 5 */
+      #s4 .slide-inner,
+      #s5 .slide-inner,
+      #s6 .slide-inner {
+        padding: 20px 32px 16px;
+        gap: 12px;
+      }
+
+      #s4 h2,
+      #s5 h2,
+      #s6 h2 {
+        font-size: 28px;
+      }
+
+      #s4 .lead,
+      #s5 .lead,
+      #s6 .lead {
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      #s4 .visual-grid,
+      #s5 .visual-grid {
+        gap: 10px;
+      }
+
+      #s4 .shot img,
+      #s5 .shot img {
+        height: 145px;
+      }
+
+      #s4 .shot p,
+      #s5 .shot p {
+        padding: 7px 9px;
+        font-size: 11px;
+        line-height: 1.3;
+      }
+
+      #s6 .flow-grid {
+        gap: 10px;
+      }
+
+      #s6 .flow {
+        min-height: 230px;
+      }
+
+      #s6 .flow-head {
+        padding: 12px 14px;
+      }
+
+      #s6 .flow-head h3 {
+        font-size: 15px;
+      }
+
+      #s6 .meta {
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .gh-link {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="slide navigation">
+    <a href="#s1">01 개요</a>
+    <a href="#s2">02 블랙박스①</a>
+    <a href="#s3">03 블랙박스②</a>
+    <a href="#s4">04 웹 UI</a>
+    <a href="#s5">05 모바일 UI</a>
+    <a href="#s6">06 API / 계약 테스트</a>
+    <a href="#s7">07 향후 방향</a>
+    <a href="#s8">08 금융/제조 DA</a>
+    <a href="#s9">09 게임/공공 DA</a>
+  </nav>
+
+  <main class="deck">
+
+    <!-- S1: 커버 -->
+    <section id="s1" class="slide dark">
+      <div class="slide-inner">
+        <header>
+          <div class="kicker">Portfolio</div>
+          <h1>정해현 | QA Engineer</h1>
+          <p class="lead">“단일 서비스라면 웹·앱·API는 같은 데이터를 보여줘야 한다”는 전제를 검증하고자 했습니다.<br>
+블랙박스 기반 테스트 케이스를 설계해 결함을 찾고, Playwright·Appium·pytest로 Web·Mobile·API 자동화를 구축했습니다.<br>
+여기에 계약 테스트를 더해 채널 간 데이터 정합성까지 점검했습니다.<br>
+데이터 분석 경험은 결함 패턴을 수치로 해석하고, 품질 상태를 논리적으로 설명하는 기반이 되었습니다.</p>
+        </header>
+        <div class="hero-grid">
+          <div>
+            <div class="pill-row">
+              <span class="pill">TC 설계</span>
+              <span class="pill">EP / BVA</span>
+              <span class="pill">탐색적 테스트</span>
+              <span class="pill">버그 리포팅</span>
+              <span class="pill">Python</span>
+              <span class="pill">pytest</span>
+              <span class="pill">Playwright</span>
+              <span class="pill">Appium</span>
+              <span class="pill">GitHub Actions</span>
+            </div>
+          </div>
+          <div class="metric-grid">
+            <div class="metric"><strong>12</strong><span>수동 테스트 케이스 설계 (EP·BVA 기반)</span></div>
+            <div class="metric"><strong>21</strong><span>자동화 테스트 21건 모두 통과</span></div>
+            <div class="metric"><strong>3</strong><span>검증 채널 3개 (Web·App·API)</span></div>
+            <div class="metric"><strong>4</strong><span>데이터 분석 프로젝트 4건</span></div>
+          </div>
+        </div>
+        <footer class="footer">
+          <span>신입 QA 엔지니어 포트폴리오 — 수동 테스트 설계 · 자동화 · 데이터 기반 품질 해석</span>
+          <span>Slide 01 / 09</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- S2: 수동 테스트 TC 설계 -->
+    <section id="s2" class="slide">
+      <div class="slide-inner">
+        <header>
+          <div class="kicker">수동 테스트 — 블랙박스 기반 테스트 케이스 설계</div>
+          <h2>동등분할(EP)·경계값 분석(BVA) 기반 테스트 케이스 설계</h2>
+          <p class="lead">내부 구현을 보지 않고도 기능 명세와 사용자 관점만으로 검증 조건을 도출했습니다. 동등분할로 유효·무효 입력을 나누어 테스트 수를 효율화했고, 경계값 분석으로 오류가 발생하기 쉬운 구간을 집중적으로 확인했습니다.</p>
+        </header>
+        <div>
+          <div class="method-grid">
+            <div class="method-card">
+              <h3>동등분할 (EP, Equivalence Partitioning)</h3>
+              <p>같은 동작을 유발하는 입력을 하나의 그룹으로 묶고 대표값을 선택해 검증했습니다. 테스트 수는 줄이되, 기능 커버리지는 유지하는 데 초점을 맞췄습니다.</p>
+            </div>
+            <div class="method-card">
+              <h3>경계값 분석 (BVA, Boundary Value Analysis)</h3>
+              <p>오류가 자주 발생하는 경계 구간(min, min+1, max-1, max, max+1)을 중심으로 테스트를 설계했습니다. 동등분할로 놓치기 쉬운 경계 조건을 보완하는 데 활용했습니다.</p>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="tc-table">
+              <thead>
+                <tr>
+                  <th>TC ID</th>
+                  <th>기능</th>
+                  <th>입력 조건</th>
+                  <th>기대 결과</th>
+                  <th>기법</th>
+                  <th>결과</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>TC-L01</td>
+                  <td>로그인</td>
+                  <td>등록된 이메일 + 올바른 비밀번호</td>
+                  <td>"Verify your email account first." 안내 노출 (데모 보안 정책)</td>
+                  <td><span class="ep-tag">EP 유효</span></td>
+                  <td><span class="pass">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>TC-L02</td>
+                  <td>로그인</td>
+                  <td>이메일 필드 공백, 비밀번호 입력</td>
+                  <td>이메일 필드 오류 메시지 노출</td>
+                  <td><span class="ep-tag">EP 무효</span></td>
+                  <td><span class="pass">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>TC-L03</td>
+                  <td>로그인</td>
+                  <td>이메일 입력, 비밀번호 필드 공백</td>
+                  <td>비밀번호 필드 오류 메시지 노출</td>
+                  <td><span class="ep-tag">EP 무효</span></td>
+                  <td><span class="pass">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>TC-L04</td>
+                  <td>로그인</td>
+                  <td>이메일 형식 오류 (예: abc@)</td>
+                  <td>이메일 형식 오류 메시지 노출</td>
+                  <td><span class="ep-tag">EP 무효</span></td>
+                  <td><span class="pass">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>TC-L05</td>
+                  <td>로그인</td>
+                  <td>미등록 계정 + 임의 비밀번호</td>
+                  <td>"These credentials do not match." 오류 노출</td>
+                  <td><span class="ep-tag">EP 무효</span></td>
+                  <td><span class="pass">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>TC-R01</td>
+                  <td>회원가입</td>
+                  <td>이미 등록된 이메일로 신규 가입</td>
+                  <td>"The email has already been taken." 오류 노출</td>
+                  <td><span class="ep-tag">EP 무효</span></td>
+                  <td><span class="pass">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>TC-R02</td>
+                  <td>회원가입</td>
+                  <td>비밀번호 ≠ 비밀번호 확인 입력</td>
+                  <td>비밀번호 불일치 오류 메시지 노출</td>
+                  <td><span class="ep-tag">EP 무효</span></td>
+                  <td><span class="pass">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>TC-Q01</td>
+                  <td>수량 입력</td>
+                  <td>수량 = 0 (허용 범위 하한 미만)</td>
+                  <td>수량 감소 버튼 비활성화</td>
+                  <td><span class="bva-tag">BVA 하한-1</span></td>
+                  <td><span class="pass">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>TC-Q02</td>
+                  <td>수량 입력</td>
+                  <td>수량 = 1 (허용 최솟값)</td>
+                  <td>수량 1로 정상 유지</td>
+                  <td><span class="bva-tag">BVA 하한</span></td>
+                  <td><span class="pass">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>TC-Q03</td>
+                  <td>수량 입력</td>
+                  <td>수량 = 2 (최솟값 + 1)</td>
+                  <td>수량이 정상적으로 증가</td>
+                  <td><span class="bva-tag">BVA 하한+1</span></td>
+                  <td><span class="pass">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>TC-Q04</td>
+                  <td>수량 입력</td>
+                  <td>음수 직접 입력 (-1)</td>
+                  <td>입력을 차단하거나 "유효하지 않은 수량" 오류 메시지를 노출</td>
+                  <td><span class="ep-tag">EP 무효</span></td>
+                  <td><span class="fail">FAIL</span></td>
+                </tr>
+                <tr>
+                  <td>TC-C01</td>
+                  <td>체크아웃 진입</td>
+                  <td>비로그인 상태에서 체크아웃 버튼 클릭</td>
+                  <td>로그인 페이지로 이동</td>
+                  <td><span class="ep-tag">EP 무효</span></td>
+                  <td><span class="pass">PASS</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="fail-note">
+            <strong>TC-Q04 이슈 식별 —</strong> 수량 필드에 -1을 직접 입력하면 오류 메시지 없이 수량이 1로 자동 조정되었습니다. 사용자가 자신의 입력 오류를 인지하기 어려운 UX 문제로 판단해 BUG-001로 기록했습니다. (03 슬라이드 참고)
+          </div>
+        </div>
+        <footer class="footer">
+          <span>수동 블랙박스 테스트 — 로그인·회원가입·수량·체크아웃 기준 TC 12건 설계</span>
+          <span>Slide 02 / 09</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- S3: 탐색적 테스트 & 버그 리포트 -->
+    <section id="s3" class="slide">
+      <div class="slide-inner">
+        <header>
+          <div class="kicker">수동 테스트 — 탐색적 테스트와 버그 리포팅</div>
+          <h2>탐색적 테스트 — 문제 발견에서 전략 개선까지</h2>
+          <p class="lead">사전에 정해진 스크립트에만 의존하지 않고, 실제 사용자 관점에서 서비스를 탐색하며 예외 동작을 확인했습니다. 발견한 이슈는 원인을 분리해 해석하고, 이후 테스트 전략과 자동화 설계에 반영했습니다.</p>
+        </header>
+        <div class="two-col">
+          <div>
+            <table class="discovery-table">
+              <thead>
+                <tr>
+                  <th>발견 항목</th>
+                  <th>문제</th>
+                  <th>원인</th>
+                  <th>전략 반영</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>이메일 인증 정책</td>
+                  <td>신규 계정으로 웹 로그인 시 "Verify your email account first." 메시지가 노출됨</td>
+                  <td>API 오류가 아니라 데모 서버의 이메일 인증 정책</td>
+                  <td>웹 로그인 분기를 제거하고, API 기반 인증 흐름 중심으로 자동화를 재설계</td>
+                </tr>
+                <tr>
+                  <td>상품 타입 분기</td>
+                  <td>virtual·grouped·bundle 상품은 "Add to Cart" 동작이 일관되지 않음</td>
+                  <td>상품 타입별 필수 옵션과 선택 조건이 서로 다름</td>
+                  <td>테스트 케이스와 자동화 범위를 simple product 중심으로 한정</td>
+                </tr>
+                <tr>
+                  <td>서버 데이터 비고정</td>
+                  <td>홈 화면 노출 상품이 바뀌면서 상품명 하드코딩 기반 테스트가 실패함</td>
+                  <td>데모 서버 상품 데이터가 고정돼 있지 않고 수시로 변경됨</td>
+                  <td>특정 상품명 대신 selector 기반의 첫 번째 상품을 동적으로 선택하도록 변경</td>
+                </tr>
+                <tr>
+                  <td>수량 입력 UX 오류</td>
+                  <td>음수(-1)를 입력해도 오류 메시지 없이 수량이 자동 조정됨</td>
+                  <td>클라이언트 측 입력 유효성 검증이 충분하지 않음</td>
+                  <td>BUG-001로 기록하고, 이후 회귀 테스트 항목에 포함</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="bug-report">
+            <div class="bug-report-head">
+              <div class="bug-meta">BUG REPORT — BUG-001</div>
+              <div class="bug-title">장바구니 수량에 음수를 입력해도 사용자 피드백이 제공되지 않음</div>
+              <div class="bug-badges">
+                <span class="severity-badge severity-minor">Minor</span>
+                <span class="severity-badge priority-medium">Priority: Medium</span>
+              </div>
+            </div>
+            <div class="bug-report-body">
+              <div class="bug-row">
+                <strong>재현 절차</strong>
+                <span>1. 상품을 장바구니에 담는다<br>2. 장바구니 화면에서 수량 필드를 선택한다<br>3. "-1"을 직접 입력한 뒤 포커스를 이동하거나 Enter를 누른다</span>
+              </div>
+              <div class="bug-row">
+                <strong>기대 결과</strong>
+                <span>"유효하지 않은 수량입니다" 메시지를 노출하고, 기존 수량을 유지해야 한다</span>
+              </div>
+              <div class="bug-row">
+                <strong>실제 결과</strong>
+                <span>오류 메시지 없이 수량이 1로 자동 조정되며, 사용자는 자신의 입력이 잘못되었는지 인지하기 어렵다</span>
+              </div>
+              <div class="bug-row">
+                <strong>영향도</strong>
+                <span>사용자가 입력 오류를 인식하지 못해 UX 신뢰도가 낮아질 수 있으며, 결제 수량에 대한 오해로 이어질 가능성이 있다.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer">
+          <span>탐색적 테스트 결과를 문제·원인·전략 반영 구조로 정리하고 BUG-001로 문서화</span>
+          <span>Slide 03 / 09</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- S4: Web UI -->
+    <section id="s4" class="slide">
+      <a class="gh-link" href="https://github.com/haeda0225/bagisto-portfolio" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub 코드 보기
+      </a>
+      <div class="slide-inner">
+        <header>
+          <div class="kicker">테스트 자동화 — 웹 UI (블랙박스 기반)</div>
+          <h2>웹 UI 자동화 — 핵심 구매 흐름 회귀 테스트 구축</h2>
+          <p class="lead">수동 테스트로 검증한 핵심 사용자 흐름을 Playwright로 자동화했습니다. UI 입출력만으로 동작을 검증하는 블랙박스 원칙을 유지하면서, 배포 이후 반복적으로 실행할 수 있는 회귀 테스트를 구성했습니다. 시나리오는 홈 → 상품 상세 → 장바구니 → 체크아웃 진입으로 이어지는 핵심 구매 흐름을 기준으로 선정했습니다.</p>
+        </header>
+        <div class="visual-grid web-shots">
+          <article class="shot">
+            <img src="assets/web-home.png" alt="Bagisto storefront home page" />
+            <p>홈 진입 후 Featured Products가 정상적으로 노출됨 <span class="pass-badge">PASS</span></p>
+          </article>
+          <article class="shot">
+            <img src="assets/web-product.png" alt="Bagisto web product detail page" />
+            <p>상품 상세 페이지 진입 및 주요 정보 렌더링 확인 <span class="pass-badge">PASS</span></p>
+          </article>
+          <article class="shot">
+            <img src="assets/web-cart-filled.png" alt="Bagisto web cart" />
+            <p>장바구니에서 상품명·수량·금액·Checkout 버튼 확인 <span class="pass-badge">PASS</span></p>
+          </article>
+          <article class="shot">
+            <img src="assets/web-checkout-entry.png" alt="Bagisto web checkout entry page" />
+            <p>체크아웃 진입 후 주소 입력 단계 노출 확인 <span class="pass-badge">PASS</span></p>
+          </article>
+        </div>
+        <footer class="footer">
+          <span>Playwright 기반 웹 UI 자동화 — 핵심 구매 흐름 회귀 테스트 구축</span>
+          <span>Slide 04 / 09</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- S5: Mobile UI -->
+    <section id="s5" class="slide">
+      <a class="gh-link" href="https://github.com/haeda0225/bagisto-portfolio" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub 코드 보기
+      </a>
+      <div class="slide-inner">
+        <header>
+          <div class="kicker">테스트 자동화 — 모바일 UI (블랙박스 기반)</div>
+          <h2>Android 앱 자동화 — Appium 기반 크로스채널 검증</h2>
+          <p class="lead">웹과 동일한 Bagisto 백엔드를 사용하는 Android 앱을 Appium으로 자동화했습니다. 앱 UI를 기준으로 기능을 점검해 플랫폼별 동작 차이를 확인했고, Web 자동화와 함께 단일 배포 사이클 안에서 크로스채널 품질을 관리할 수 있도록 구성했습니다. 시나리오는 로그인 → 탐색 → 장바구니로 이어지는 핵심 사용자 흐름을 중심으로 선정했습니다.</p>
+        </header>
+        <div class="visual-grid">
+          <article class="shot">
+            <img src="assets/mobile-login.png" alt="Bagisto mobile login screen" />
+            <p>로그인 화면에서 이메일·비밀번호 입력 필드와 Login 버튼 확인 <span class="pass-badge">PASS</span></p>
+          </article>
+          <article class="shot">
+            <img src="assets/mobile-home.png" alt="Bagisto mobile home" />
+            <p>홈 화면에서 Featured Products와 카테고리 노출 확인 <span class="pass-badge">PASS</span></p>
+          </article>
+          <article class="shot">
+            <img src="assets/mobile-category.png" alt="Bagisto mobile category product list" />
+            <p>카테고리 진입 후 상품 목록과 Products 섹션 확인 <span class="pass-badge">PASS</span></p>
+          </article>
+          <article class="shot">
+            <img src="assets/mobile-cart.png" alt="Bagisto mobile cart" />
+            <p>장바구니 담기 동작과 Pay Now 버튼 노출 확인 <span class="pass-badge">PASS</span></p>
+          </article>
+        </div>
+        <footer class="footer">
+          <span>Appium + ADB 기반 모바일 UI 자동화 — 핵심 사용자 흐름 검증</span>
+          <span>Slide 05 / 09</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- S6: API & Contract -->
+    <section id="s6" class="slide">
+      <a class="gh-link" href="https://github.com/haeda0225/bagisto-portfolio" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub 코드 보기
+      </a>
+      <div class="slide-inner">
+        <header>
+          <div class="kicker">테스트 자동화 — API 및 계약 테스트</div>
+          <h2>API 자동화와 채널 간 계약 검증</h2>
+          <p class="lead">UI를 거치지 않고 GraphQL API를 직접 검증해 백엔드 품질을 독립적으로 점검했습니다. 또한 Web·App·API 세 채널이 동일한 데이터를 반환하는지 계약 테스트로 교차 확인해, 채널 간 데이터 불일치를 사전에 탐지할 수 있도록 구성했습니다.</p>
+        </header>
+        <div class="flow-grid">
+          <article class="flow">
+            <div class="flow-head">
+              <h3>API 테스트 8건 — 모두 통과</h3>
+              <p class="meta">회원가입·로그인, 상품 조회, 장바구니, 주소·배송·결제 방식 저장, 주문 생성·조회까지 핵심 API 흐름을 검증</p>
+            </div>
+            <div class="flow-asset">
+              <img src="assets/api-flow.svg" alt="API checkout flow" />
+            </div>
+          </article>
+          <article class="flow">
+            <div class="flow-head">
+              <h3>채널 간 계약 검증 5건 — 모두 통과</h3>
+              <p class="meta">예: Web UI의 상품명과 API 응답의 상품명 일치, Mobile UI의 주문번호와 API 주문 목록 일치 여부 확인</p>
+            </div>
+            <div class="flow-asset">
+              <img src="assets/contract-flow.svg" alt="Contract validation flow" />
+            </div>
+          </article>
+        </div>
+        <footer class="footer">
+          <span>pytest + GraphQL requests 기반 API 자동화 및 채널 간 계약 검증</span>
+          <span>Slide 06 / 09</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- S7: 성장 로드맵 -->
+    <section id="s7" class="slide">
+      <div class="slide-inner">
+        <header>
+          <div class="kicker">성장 로드맵 — QA 역량 확장 계획</div>
+          <h2>자동화 QA를 넘어 API 품질 검증과 성능 테스트까지</h2>
+          <p class="lead">기능 자동화를 구축한 현재 단계에서 더 나아가, API 품질 검증과 성능 테스트까지 QA 범위를 확장하고자 합니다. 각 단계는 분리된 학습이 아니라, 하나의 서비스 품질을 더 넓고 깊게 검증하기 위한 다음 단계로 연결됩니다.</p>
+        </header>
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <div class="roadmap-head current">
+              <div class="step-label">현재 · 완료</div>
+              <h3>자동화 QA</h3>
+            </div>
+            <div class="roadmap-body">
+              <ul>
+                <li>블랙박스 기반 테스트 케이스 설계와 탐색적 테스트 수행</li>
+                <li>Playwright·Appium·pytest로 Web·Mobile·API 자동화 구축</li>
+                <li>GitHub Actions와 연동해 배포 후 자동 회귀 테스트 실행</li>
+                <li>계약 검증으로 채널 간 데이터 정합성 확인</li>
+              </ul>
+            </div>
+          </div>
+          <div class="roadmap-card">
+            <div class="roadmap-head next">
+              <div class="step-label">다음 단계</div>
+              <h3>API 품질 검증</h3>
+            </div>
+            <div class="roadmap-body">
+              <ul>
+                <li>Postman으로 Bagisto 주문 E2E API 컬렉션 구성</li>
+                <li>응답 스키마, 상태 코드, 비즈니스 룰 assertion 체계화</li>
+                <li>Newman CLI를 활용해 기존 CI 파이프라인에 API 품질 게이트 추가</li>
+                <li>기능 자동화와 API 검증을 하나의 파이프라인에서 운영하는 것을 목표로 함</li>
+              </ul>
+            </div>
+          </div>
+          <div class="roadmap-card">
+            <div class="roadmap-head after">
+              <div class="step-label">이후 단계</div>
+              <h3>성능 테스트 &amp; 품질 분석</h3>
+            </div>
+            <div class="roadmap-body">
+              <ul>
+                <li>JMeter로 동시 사용자 부하 시나리오 구성</li>
+                <li>Throughput, 평균 응답 시간, 오류율을 기준으로 병목 구간 분석</li>
+                <li>기능·API·성능을 아우르는 통합 QA 체계로 서비스 전반을 검증</li>
+                <li>장기적으로는 결함 예방 중심의 품질 분석형 QA 엔지니어로 성장</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <footer class="footer">
+          <span>수동 테스트 설계 → 자동화 QA → API 품질 검증 → 성능 테스트로 확장하는 로드맵</span>
+          <span>Slide 07 / 09</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- S8: 금융 DA + 제조 DA -->
+    <section id="s8" class="slide">
+      <div class="slide-inner">
+        <header>
+          <div class="kicker">Data Analysis Portfolio — 01 · 02</div>
+          <h2>[금융] 기업분석 AI 대시보드 &nbsp;·&nbsp; [제조] CNC 머신 불량 예측 분석</h2>
+        </header>
+        <div class="da-pair-grid">
+          <div class="da-item">
+            <span class="badge blue">Finance Data Analysis</span>
+            <div class="da-visual">
+              <img src="1.finance_da_portfolio/page_1.jpg" alt="금융 기업분석 AI 대시보드 화면" />
+            </div>
+            <div class="summary">
+              <div class="summary-row"><strong>목표</strong><span>투자 초보자도 재무지표를 쉽게 해석할 수 있도록, 기업 건강도·투자 성향별 점수·뉴스 감정 정보를 하나의 대시보드로 제공</span></div>
+              <div class="summary-row"><strong>기술</strong><span>Python, Pandas, Streamlit, matplotlib, plotly, BeautifulSoup, Selenium, marcap, FinanceDataReader</span></div>
+              <div class="summary-row"><strong>성과</strong><span>수집·정제 파이프라인을 자동화하고, CatBoost+SHAP 기반으로 핵심 변수 5개를 도출했습니다. 447개 기업을 즉시 비교할 수 있는 구조로 구현했습니다.</span></div>
+            </div>
+          </div>
+          <div class="da-item">
+            <span class="badge red">Manufacturing Defect Prediction</span>
+            <div class="da-visual">
+              <img src="2.manufacture_da_portfolio/image.png" alt="CNC 머신 불량 예측 분석 대표 이미지" />
+            </div>
+            <div class="summary">
+              <div class="summary-row"><strong>목표</strong><span>CNC 머신 센서 로그를 바탕으로 불량 발생 가능성을 사전에 예측하고, 현장 엔지니어가 이해할 수 있는 원인 지표를 제시</span></div>
+              <div class="summary-row"><strong>기술</strong><span>Python, Pandas, scikit-learn, CatBoostClassifier, GridSearchCV, matplotlib, SHAP, Jupyter Notebook</span></div>
+              <div class="summary-row"><strong>성과</strong><span>기준 모델 정확도 85%에서 최종 CatBoost 모델 96%까지 개선했고, SHAP 기반으로 주요 영향 변수를 도출했습니다.</span></div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer">
+          <span>데이터 해석과 이상 패턴 분석 경험은 QA에서 테스트 데이터 설계와 결함 원인 해석 역량으로 이어졌습니다</span>
+          <span>Slide 08 / 09</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- S9: 게임 DA + 공공 DA -->
+    <section id="s9" class="slide">
+      <div class="slide-inner">
+        <header>
+          <div class="kicker">Data Analysis Portfolio — 03 · 04</div>
+          <h2>[게임] 롤 입문 추천 분석 &nbsp;·&nbsp; [공공] 고객 맞춤 부동산 분석</h2>
+        </header>
+        <div class="da-pair-grid">
+          <div class="da-item">
+            <span class="badge gold">Game Recommendation Analysis</span>
+            <div class="da-visual">
+              <img src="3.game_da_portfolio/%EC%8D%B8%EB%84%A4%EC%9D%BC_-_%EA%B9%80%EB%8F%99%EC%9C%A4.gif" alt="롤 입문 추천 분석 썸네일" />
+            </div>
+            <div class="summary">
+              <div class="summary-row"><strong>목표</strong><span>롤 입문자가 자신의 성향에 맞는 챔피언을 쉽게 고를 수 있도록 데이터 기반 추천과 시각화를 제공</span></div>
+              <div class="summary-row"><strong>기술</strong><span>Python, Pandas, matplotlib, Jupyter Notebook</span></div>
+              <div class="summary-row"><strong>강점</strong><span>초보자 관점에서 문제를 정의하고, 직관적인 비교 화면으로 추천 근거를 이해하기 쉽게 전달했습니다.</span></div>
+            </div>
+          </div>
+          <div class="da-item">
+            <span class="badge green">Public Real Estate Analysis</span>
+            <div class="da-visual">
+              <img src="4.estate_da_portfolio/a8eff14b-cee4-4af4-8510-5914214d1c22.png" alt="고객 맞춤 부동산 분석 대표 이미지" />
+            </div>
+            <div class="summary">
+              <div class="summary-row"><strong>목표</strong><span>서울시 부동산 공공데이터를 바탕으로 고객 유형별 매도·매수 의사결정에 필요한 인사이트를 제공</span></div>
+              <div class="summary-row"><strong>기술</strong><span>Python, Pandas, matplotlib</span></div>
+              <div class="summary-row"><strong>강점</strong><span>계절성, 거래량, 지역별 가격 흐름을 시각화해 고객 상황에 맞는 매매 타이밍을 설명했습니다.</span></div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer">
+          <span>요구사항을 지표로 바꾸고 시각적으로 설명한 경험은 QA에서 우선순위 판단과 품질 보고 역량으로 연결됩니다</span>
+          <span>Slide 09 / 09</span>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
